@@ -29,13 +29,11 @@
           <td>{{ $b->penerbit }}</td>
           <td>{{ $b->tahun_terbit }}</td>
           <td>
-          <pre>
-            <?php var_dump($b) ?>
-            </pre>
+            {{ $b->category->nama_kategori }}
           </td>
           <td>
-              <a href="/buku/edit/{{ $b->id }}" class="btn btn-warning btn-sm"><i class="fa fa-pencil" aria-hidden="true"></i> Edit</a>
-              <a href="/buku/delete/{{ $b->id }}" class="btn btn-danger btn-sm"><i class="fa fa-ban" aria-hidden="true"></i> Hapus</a>
+              <a href="/buku/edit/{{ $b->id }}" class="btn btn-warning btn-sm"><i class="fa fa-pencil" aria-hidden="true"></i></a>
+              <a href="/buku/delete/{{ $b->id }}" class="btn btn-danger btn-sm"><i class="fa fa-ban" aria-hidden="true"></i></a>
           </td>
       </tr>
       @endforeach
@@ -76,6 +74,14 @@
             <div class="form-group">
                 <label for="tahun_terbit">Tahun Terbit</label>
                 <input type="text" class="form-control" name="tahun_terbit" id="tahun_terbit" placeholder="2012">
+            </div>
+            <div class="form-group">
+              <label for="categorylist">Kategori</label>
+              <select class="form-control" id="categorylist" name="kategori_id">
+                @foreach($categorylist as $c)
+                  <option value="{{ $c->id }}">{{ $c->nama_kategori }}</option>
+                @endforeach
+              </select>
             </div>
       </div>
       <div class="modal-footer">

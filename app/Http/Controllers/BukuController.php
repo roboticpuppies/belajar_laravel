@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\BukuModel;
+use App\KategoriModel;
 use Illuminate\Http\Request;
 
 class BukuController extends Controller
@@ -12,7 +13,8 @@ class BukuController extends Controller
     }
     public function index(){
         $buku = BukuModel::all();
-        return view('buku.index', ['buku' => $buku]);
+        $categorylist = KategoriModel::all();
+        return view('buku.index', compact('buku', 'categorylist'));
     }
 
     public function tambah(){
@@ -26,7 +28,8 @@ class BukuController extends Controller
             'no_barcode'    => 'required',
             'pengarang'     => 'required',
             'penerbit'      => 'required',
-            'tahun_terbit'  => 'required'
+            'tahun_terbit'  => 'required',
+            'kategori_id'  => 'required'
         ]);
 
         BukuModel::create([
@@ -35,7 +38,8 @@ class BukuController extends Controller
             'no_barcode'    => $request->no_barcode,
             'pengarang'     => $request->pengarang,
             'penerbit'      => $request->penerbit,
-            'tahun_terbit'  => $request->tahun_terbit
+            'tahun_terbit'  => $request->tahun_terbit,
+            'kategori_id'  => $request->kategori_id
         ]);
 
         return redirect('/buku');
@@ -43,7 +47,8 @@ class BukuController extends Controller
 
     public function edit($id){
         $buku = BukuModel::find($id);
-        return view('buku.edit', ['buku' => $buku]);
+        $categorylist = KategoriModel::all();
+        return view('buku.edit', compact('buku','categorylist'));
     }
 
     public function update($id, Request $request){
@@ -53,7 +58,8 @@ class BukuController extends Controller
             'no_barcode'    => 'required',
             'pengarang'     => 'required',
             'penerbit'      => 'required',
-            'tahun_terbit'  => 'required'
+            'tahun_terbit'  => 'required',
+            'kategori_id'  => 'required'
         ]);
         $buku = BukuModel::find($id);
         $buku->judul         = $request->judul;
@@ -62,6 +68,7 @@ class BukuController extends Controller
         $buku->pengarang     = $request->pengarang;
         $buku->penerbit      = $request->penerbit;
         $buku->tahun_terbit  = $request->tahun_terbit;
+        $buku->kategori_id   = $request->kategori_id;
         $buku->save();
         return redirect('/buku');
     }

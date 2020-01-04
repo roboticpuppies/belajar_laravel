@@ -7,10 +7,10 @@ use Illuminate\Database\Eloquent\Model;
 class KategoriModel extends Model
 {
     public $timestamps = false;
-    protected $fillable = ['nama_kategori'];
     protected $table = 'kategori';
+    protected $fillable = ['nama_kategori'];
 
-    public function buku(){
+    public function books(){
         return $this->belongsTo('App\BukuModel');
     }
 }

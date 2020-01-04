@@ -31,6 +31,18 @@
             <label for="tahun_terbit">Tahun Terbit</label>
             <input type="text" class="form-control" name="tahun_terbit" id="tahun_terbit" placeholder="2012" value="{{ $buku->tahun_terbit }}">
         </div>
+        <div class="form-group">
+              <label for="categorylist">Kategori</label>
+              <select class="form-control" id="categorylist" name="kategori_id">
+                @foreach($categorylist as $c)
+                    @if($buku->kategori_id == $c->id)
+                    <option value="{{ $c->id }}" selected>{{ $c->nama_kategori }}</option>
+                    @else
+                    <option value="{{ $c->id }}">{{ $c->nama_kategori }}</option>
+                    @endif
+                @endforeach
+              </select>
+            </div>
     <button type="submit" class="btn btn-primary">Simpan</button>
 </form>
 

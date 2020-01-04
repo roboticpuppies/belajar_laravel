@@ -18,8 +18,8 @@
       <tr>
           <td>{{ $b->nama_kategori }}</td>
           <td>
-              <a href="/kategori/edit/{{ $b->id }}" class="btn btn-warning btn-sm"><i class="fa fa-pencil" aria-hidden="true"></i> Edit</a>
-              <a href="/kategori/delete/{{ $b->id }}" class="btn btn-danger btn-sm"><i class="fa fa-ban" aria-hidden="true"></i> Hapus</a>
+              <a href="/kategori/edit/{{ $b->id }}" class="btn btn-warning btn-sm"><i class="fa fa-pencil" aria-hidden="true"></i></a>
+              <a href="/kategori/delete/{{ $b->id }}" class="btn btn-danger btn-sm"><i class="fa fa-ban" aria-hidden="true"></i></a>
           </td>
       </tr>
       @endforeach
@@ -50,7 +50,4 @@
     </form>
   </div>
 </div>
-<pre>
-<?php var_dump($kategori) ?>
-</pre>
 @endsection

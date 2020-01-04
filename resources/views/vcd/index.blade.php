@@ -22,8 +22,8 @@
           <td>{{ $b->no_register }}</td>
           <td>{{ $b->penerbit }}</td>
           <td>
-              <a href="/vcd/edit/{{ $b->id }}" class="btn btn-danger btn-sm"><i class="fa fa-pencil" aria-hidden="true"></i> Edit</a>
-              <a href="/vcd/delete/{{ $b->id }}" class="btn btn-danger btn-sm"><i class="fa fa-ban" aria-hidden="true"></i> Hapus</a>
+              <a href="/vcd/edit/{{ $b->id }}" class="btn btn-danger btn-sm"><i class="fa fa-pencil" aria-hidden="true"></i></a>
+              <a href="/vcd/delete/{{ $b->id }}" class="btn btn-danger btn-sm"><i class="fa fa-ban" aria-hidden="true"></i></a>
           </td>
       </tr>
       @endforeach
