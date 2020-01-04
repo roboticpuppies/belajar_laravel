@@ -12,7 +12,7 @@
 */
 
 Route::get('/', function () {
-    return redirect('/buku');
+    return redirect()->route('login');
 });
 
 Route::get('/buku', 'BukuController@index');
@@ -32,3 +32,8 @@ Route::post('/kategori/store', 'KategoriController@store');
 Route::get('/kategori/edit/{id}', 'KategoriController@edit');
 Route::get('/kategori/delete/{id}', 'KategoriController@delete');
 Route::put('/kategori/update/{id}', 'KategoriController@update');
+Auth::routes();
+
+Route::get('/home', function () {
+    return redirect('/buku');
+});

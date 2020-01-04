@@ -8,6 +8,11 @@ use Illuminate\Http\Request;
 
 class BukuController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
+    
     public function kategori(){
         return $this->hasOne('App\KategoriModel');
     }
