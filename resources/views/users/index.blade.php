@@ -5,6 +5,7 @@
 @section('content')
 <a href="#" class="btn btn-primary" data-toggle="modal" data-target="#modalTambah"><i class="fa fa-plus" aria-hidden="true"></i> Tambah User</a>
 <br>
+<br>
 @if (session('status'))
     <div class="alert alert-success">
         {{ session('status') }}
