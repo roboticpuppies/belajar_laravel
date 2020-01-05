@@ -58,26 +58,32 @@
           <li class="nav-item">
             <a class="nav-link" href="/admin/buku">
               <span data-feather="file"></span>
-              Buku
+              <i class="fa fa-book" aria-hidden="true" style="padding-right:10px"></i> Buku
             </a>
           </li>
           <li class="nav-item">
             <a class="nav-link" href="/admin/vcd">
               <span data-feather="file"></span>
-              VCD
+              <i class="fa fa-forward" aria-hidden="true" style="padding-right:10px"></i> VCD
             </a>
           </li>
           <li class="nav-item">
             <a class="nav-link" href="/admin/kategori">
               <span data-feather="file"></span>
-              Kategori
+              <i class="fa fa-bookmark" aria-hidden="true" style="padding-right:10px"></i> Kategori
+            </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="/admin/users">
+              <span data-feather="file"></span>
+              <i class="fa fa-plus" aria-hidden="true" style="padding-right:10px"></i> Users
             </a>
           </li>
         @elsecan('isSiswa')
           <li class="nav-item">
             <a class="nav-link" href="/siswa/pinjamanku">
               <span data-feather="file"></span>
-              Pinjamanku
+              <i class="fa fa-folder" aria-hidden="true" style="padding-right:10px"></i> Pinjamanku
             </a>
           </li>
         @endcan
