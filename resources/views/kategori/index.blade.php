@@ -6,6 +6,12 @@
 <a href="#" class="btn btn-primary" data-toggle="modal" data-target="#modalTambah"><i class="fa fa-plus" aria-hidden="true"></i> Tambah Kategori</a>
 <br>
 <br>
+@if (session('status'))
+    <div class="alert alert-success">
+        {{ session('status') }}
+    </div>
+@endif
+<br>
 <table class="table table-bordered table-hover table-striped">
   <thead>
       <tr>
@@ -18,8 +24,8 @@
       <tr>
           <td>{{ $b->nama_kategori }}</td>
           <td>
-              <a href="/kategori/edit/{{ $b->id }}" class="btn btn-warning btn-sm"><i class="fa fa-pencil" aria-hidden="true"></i></a>
-              <a href="/kategori/delete/{{ $b->id }}" class="btn btn-danger btn-sm"><i class="fa fa-ban" aria-hidden="true"></i></a>
+              <a href="/admin/kategori/edit/{{ $b->id }}" class="btn btn-warning btn-sm"><i class="fa fa-pencil" aria-hidden="true"></i></a>
+              <a href="/admin/kategori/delete/{{ $b->id }}" class="btn btn-danger btn-sm"><i class="fa fa-ban" aria-hidden="true"></i></a>
           </td>
       </tr>
       @endforeach
@@ -34,7 +40,7 @@
           <span aria-hidden="true">&times;</span>
         </button>
       </div>
-      <form action="/kategori/store" method="POST">
+      <form action="/admin/kategori/store" method="POST">
       <div class="modal-body">
       {{ csrf_field() }}
             <div class="form-group">

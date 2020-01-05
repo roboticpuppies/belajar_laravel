@@ -6,6 +6,12 @@
 <a href="#" class="btn btn-primary" data-toggle="modal" data-target="#modalTambah"><i class="fa fa-plus" aria-hidden="true"></i> Tambah VCD</a>
 <br>
 <br>
+@if (session('status'))
+    <div class="alert alert-success">
+        {{ session('status') }}
+    </div>
+@endif
+<br>
 <table class="table table-bordered table-hover table-striped">
   <thead>
       <tr>
@@ -22,8 +28,8 @@
           <td>{{ $b->no_register }}</td>
           <td>{{ $b->penerbit }}</td>
           <td>
-              <a href="/vcd/edit/{{ $b->id }}" class="btn btn-danger btn-sm"><i class="fa fa-pencil" aria-hidden="true"></i></a>
-              <a href="/vcd/delete/{{ $b->id }}" class="btn btn-danger btn-sm"><i class="fa fa-ban" aria-hidden="true"></i></a>
+              <a href="/admin/vcd/edit/{{ $b->id }}" class="btn btn-warning btn-sm"><i class="fa fa-pencil" aria-hidden="true"></i></a>
+              <a href="/admin/vcd/delete/{{ $b->id }}" class="btn btn-danger btn-sm"><i class="fa fa-ban" aria-hidden="true"></i></a>
           </td>
       </tr>
       @endforeach
@@ -38,7 +44,7 @@
           <span aria-hidden="true">&times;</span>
         </button>
       </div>
-      <form action="/vcd/store" method="POST">
+      <form action="/admin/vcd/store" method="POST">
       <div class="modal-body">
       {{ csrf_field() }}
             <div class="form-group">

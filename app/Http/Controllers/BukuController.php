@@ -47,7 +47,7 @@ class BukuController extends Controller
             'kategori_id'  => $request->kategori_id
         ]);
 
-        return redirect('/buku');
+        return redirect('/admin/buku')->with('status', 'Sukses!');
     }
 
     public function edit($id){
@@ -75,12 +75,12 @@ class BukuController extends Controller
         $buku->tahun_terbit  = $request->tahun_terbit;
         $buku->kategori_id   = $request->kategori_id;
         $buku->save();
-        return redirect('/buku');
+        return redirect('/admin/buku')->with('status', 'Sukses!');
     }
 
     public function delete($id){
         $buku = BukuModel::find($id);
         $buku->delete();
-        return redirect('/buku');
+        return redirect('/admin/buku')->with('status', 'Sukses!');
     }
 }

@@ -4,7 +4,7 @@
 
 @section('content')
 
-<form action="/buku/update/{{ $buku->id }}" method="POST">
+<form action="/admin/buku/update/{{ $buku->id }}" method="POST">
     {{ csrf_field() }}
     {{ method_field('PUT') }}
         <div class="form-group">

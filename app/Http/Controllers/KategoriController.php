@@ -30,7 +30,7 @@ class KategoriController extends Controller
             'nama_kategori'         => $request->nama_kategori
         ]);
 
-        return redirect('/kategori');
+        return redirect('/admin/kategori')->with('status', 'Sukses!');
     }
 
     public function edit($id){
@@ -45,12 +45,12 @@ class KategoriController extends Controller
         $kategori = KategoriModel::find($id);
         $kategori->nama_kategori         = $request->nama_kategori;
         $kategori->save();
-        return redirect('/kategori');
+        return redirect('/admin/kategori')->with('status', 'Sukses!');
     }
 
     public function delete($id){
         $kategori = KategoriModel::find($id);
         $kategori->delete();
-        return redirect('/kategori');
+        return redirect('/admin/kategori')->with('status', 'Sukses!');
     }
 }

@@ -34,7 +34,7 @@ class VCDController extends Controller
             'penerbit'      => $request->penerbit
         ]);
 
-        return redirect('/vcd');
+        return redirect('/admin/vcd')->with('status', 'Sukses!');
     }
 
     public function edit($id){
@@ -53,12 +53,12 @@ class VCDController extends Controller
         $vcd->no_register   = $request->no_register;
         $vcd->penerbit      = $request->penerbit;
         $vcd->save();
-        return redirect('/vcd');
+        return redirect('/admin/vcd')->with('status', 'Sukses!');
     }
 
     public function delete($id){
         $vcd = VCDModel::find($id);
         $vcd->delete();
-        return redirect('/vcd');
+        return redirect('/admin/vcd')->with('status', 'Sukses!');
     }
 }

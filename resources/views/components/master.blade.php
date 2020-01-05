@@ -4,7 +4,7 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <title>@yield('judul_halaman')</title>
+    <title>@yield('judul_halaman') - {{ config('app.name', 'Laravel') }}</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
     <link href="https://getbootstrap.com/docs/4.4/examples/dashboard/dashboard.css" rel="stylesheet">
     <link href="https://cdn.datatables.net/1.10.20/css/dataTables.bootstrap4.min.css" rel="stylesheet">
@@ -51,44 +51,37 @@
           <li class="nav-item">
             <a class="nav-link active" href="/">
               <span data-feather="home"></span>
-              Dashboard
+              Home
             </a>
           </li>
+        @can('isAdmin')
           <li class="nav-item">
-            <a class="nav-link" href="/buku">
+            <a class="nav-link" href="/admin/buku">
               <span data-feather="file"></span>
               Buku
             </a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="/vcd">
+            <a class="nav-link" href="/admin/vcd">
               <span data-feather="file"></span>
               VCD
             </a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="/kategori">
+            <a class="nav-link" href="/admin/kategori">
               <span data-feather="file"></span>
               Kategori
             </a>
           </li>
-        </ul>
-
-        <h6 class="sidebar-heading d-flex justify-content-between align-items-center px-3 mt-4 mb-1 text-muted">
-          <span>Saved reports</span>
-          <a class="d-flex align-items-center text-muted" href="#" aria-label="Add a new report">
-            <span data-feather="plus-circle"></span>
-          </a>
-        </h6>
-        <ul class="nav flex-column mb-2">
+        @elsecan('isSiswa')
           <li class="nav-item">
-            <a class="nav-link" href="#">
-              <span data-feather="file-text"></span>
-              Current month
+            <a class="nav-link" href="/siswa/pinjamanku">
+              <span data-feather="file"></span>
+              Pinjamanku
             </a>
           </li>
+        @endcan
         </ul>
-      </div>
     </nav>
 
     <main role="main" class="col-md-9 ml-sm-auto col-lg-10 px-4">

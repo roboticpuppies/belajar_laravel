@@ -6,6 +6,12 @@
 <a href="#" class="btn btn-primary" data-toggle="modal" data-target="#modalTambah"><i class="fa fa-plus" aria-hidden="true"></i> Tambah Buku</a>
 <br>
 <br>
+@if (session('status'))
+    <div class="alert alert-success">
+        {{ session('status') }}
+    </div>
+@endif
+<br>
 <table class="table table-bordered table-hover table-striped">
   <thead>
       <tr>
@@ -32,8 +38,8 @@
             {{ $b->category->nama_kategori }}
           </td>
           <td>
-              <a href="/buku/edit/{{ $b->id }}" class="btn btn-warning btn-sm"><i class="fa fa-pencil" aria-hidden="true"></i></a>
-              <a href="/buku/delete/{{ $b->id }}" class="btn btn-danger btn-sm"><i class="fa fa-ban" aria-hidden="true"></i></a>
+              <a href="/admin/buku/edit/{{ $b->id }}" class="btn btn-warning btn-sm"><i class="fa fa-pencil" aria-hidden="true"></i></a>
+              <a href="/admin/buku/delete/{{ $b->id }}" class="btn btn-danger btn-sm"><i class="fa fa-ban" aria-hidden="true"></i></a>
           </td>
       </tr>
       @endforeach
@@ -48,7 +54,7 @@
           <span aria-hidden="true">&times;</span>
         </button>
       </div>
-      <form action="/buku/store" method="POST">
+      <form action="/admin/buku/store" method="POST">
       <div class="modal-body">
       {{ csrf_field() }}
             <div class="form-group">
@@ -73,7 +79,7 @@
             </div>
             <div class="form-group">
                 <label for="tahun_terbit">Tahun Terbit</label>
-                <input type="text" class="form-control" name="tahun_terbit" id="tahun_terbit" placeholder="2012">
+                <input type="number" class="form-control" name="tahun_terbit" id="tahun_terbit" placeholder="2012">
             </div>
             <div class="form-group">
               <label for="categorylist">Kategori</label>

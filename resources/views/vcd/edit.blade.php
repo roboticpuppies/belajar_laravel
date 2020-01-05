@@ -4,7 +4,7 @@
 
 @section('content')
 
-<form action="/vcd/update/{{ $vcd->id }}" method="POST">
+<form action="/admin/vcd/update/{{ $vcd->id }}" method="POST">
     {{ csrf_field() }}
     {{ method_field('PUT') }}
         <div class="form-group">
