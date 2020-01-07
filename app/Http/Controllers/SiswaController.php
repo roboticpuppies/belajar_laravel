@@ -22,6 +22,7 @@ class SiswaController extends Controller
                         ->join('users', 'peminjaman.siswa_id', '=', 'users.id')
                         ->join('buku', 'peminjaman.buku_id', '=', 'buku.id')
                         ->select('peminjaman.id', 'users.name', 'buku.judul', 'peminjaman.tanggal_pinjam', 'peminjaman.deadline_pengembalian')
+                        ->where('peminjaman.siswa_id', '=', $siswa_id)
                         ->get();
 
         return view('siswa.pinjamanku', compact('peminjaman'));

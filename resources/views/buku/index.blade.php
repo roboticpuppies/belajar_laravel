@@ -38,8 +38,16 @@
             {{ $b->category->nama_kategori }}
           </td>
           <td>
-              <a href="/admin/buku/edit/{{ $b->id }}" class="btn btn-warning btn-sm"><i class="fa fa-pencil" aria-hidden="true"></i></a>
-              <a href="/admin/buku/delete/{{ $b->id }}" class="btn btn-danger btn-sm"><i class="fa fa-ban" aria-hidden="true"></i></a>
+            <div class="btn-group" role="group">
+              <button id="btnAction" type="button" class="btn btn-secondary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                Action
+              </button>
+              <div class="dropdown-menu" aria-labelledby="btnAction">
+                <a class="dropdown-item" href="/admin/buku/edit/{{ $b->id }}">Edit</a>
+                <a class="dropdown-item" href="/admin/buku/delete/{{ $b->id }}">Delete</a>
+                <a class="dropdown-item" href="/admin/buku/pinjam/{{ $b->id }}">Pinjam</a>
+              </div>
+            </div>
           </td>
       </tr>
       @endforeach

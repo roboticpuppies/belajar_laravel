@@ -8,7 +8,7 @@
     {{ csrf_field() }}
     {{ method_field('PUT') }}
         <div class="form-group">
-            <label for="judul">Judul Kategori</label>
+            <label for="nama_kategori">Judul Kategori</label>
             <input type="text" class="form-control" name="nama_kategori" id="nama_kategori" placeholder="Fiction" value="{{ $kategori->nama_kategori }}">
         </div>
     <button type="submit" class="btn btn-primary">Simpan</button>

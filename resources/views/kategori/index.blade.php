@@ -24,8 +24,15 @@
       <tr>
           <td>{{ $b->nama_kategori }}</td>
           <td>
-              <a href="/admin/kategori/edit/{{ $b->id }}" class="btn btn-warning btn-sm"><i class="fa fa-pencil" aria-hidden="true"></i></a>
-              <a href="/admin/kategori/delete/{{ $b->id }}" class="btn btn-danger btn-sm"><i class="fa fa-ban" aria-hidden="true"></i></a>
+            <div class="btn-group" role="group">
+              <button id="btnAction" type="button" class="btn btn-secondary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                Action
+              </button>
+              <div class="dropdown-menu" aria-labelledby="btnAction">
+                <a class="dropdown-item" href="/admin/kategori/edit/{{ $b->id }}">Edit</a>
+                <a class="dropdown-item" href="/admin/kategori/delete/{{ $b->id }}">Delete</a>
+              </div>
+            </div>
           </td>
       </tr>
       @endforeach

@@ -21,9 +21,11 @@ Route::get('/home', function () {
 
 Route::get('/admin/buku', 'BukuController@index')->middleware('can:isAdmin');
 Route::post('/admin/buku/store', 'BukuController@store')->middleware('can:isAdmin');
+Route::post('/admin/buku/fixpinjam/', 'BukuController@fixpinjam')->middleware('can:isAdmin');
 Route::get('/admin/buku/edit/{id}', 'BukuController@edit')->middleware('can:isAdmin');
 Route::get('/admin/buku/delete/{id}', 'BukuController@delete')->middleware('can:isAdmin');
 Route::put('/admin/buku/update/{id}', 'BukuController@update')->middleware('can:isAdmin');
+Route::get('/admin/buku/pinjam/{id}', 'BukuController@pinjam')->middleware('can:isAdmin');
 
 Route::get('/admin/vcd', 'VCDController@index')->middleware('can:isAdmin');
 Route::post('/admin/vcd/store', 'VCDController@store')->middleware('can:isAdmin');
@@ -44,4 +46,6 @@ Route::get('/admin/users/delete/{id}', 'UserController@delete')->middleware('can
 Route::get('/siswa/pinjamanku', 'SiswaController@pinjamanku')->middleware('can:isSiswa');
 Route::post('/siswa/updatepassword', 'SiswaController@updatepassword')->middleware('can:isSiswa');
 Route::post('/siswa/updatediri', 'SiswaController@updatediri');
+
+Route::get('/admin/peminjaman/', 'BukuController@peminjaman')->middleware('can:isAdmin');
 Auth::routes();

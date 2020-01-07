@@ -4,7 +4,11 @@ namespace App\Http\Controllers;
 
 use App\BukuModel;
 use App\KategoriModel;
+use App\User;
+use App\PeminjamanModel;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
+use DB;
 
 class BukuController extends Controller
 {
@@ -50,6 +54,24 @@ class BukuController extends Controller
         return redirect('/admin/buku')->with('status', 'Sukses!');
     }
 
+    public function fixpinjam(Request $request)
+    {
+        $datenow = Carbon::now()->toDateTimeString();
+        $deadline = Carbon::now()->addDays(7)->toDateTimeString();
+        $this->validate($request,[
+            'siswa_id'         => 'required',
+            'buku_id'          => 'required',
+        ]);
+
+        PeminjamanModel::create([
+            'siswa_id'         => $request->siswa_id,
+            'buku_id'          => $request->buku_id,
+            'tanggal_pinjam'        => $datenow,
+            'deadline_pengembalian' => $deadline
+        ]);
+        return redirect('/admin/buku')->with('status', 'Sukses!');
+    }
+
     public function edit($id){
         $buku = BukuModel::find($id);
         $categorylist = KategoriModel::all();
@@ -82,5 +104,22 @@ class BukuController extends Controller
         $buku = BukuModel::find($id);
         $buku->delete();
         return redirect('/admin/buku')->with('status', 'Sukses!');
+    }
+
+    public function pinjam($id){
+        $buku = BukuModel::find($id);
+        $user = User::all();
+        return view('buku.pinjam', compact('buku','user'));
+    }
+
+    public function peminjaman()
+    {
+        $peminjaman = DB::table('peminjaman')
+                        ->join('users', 'peminjaman.siswa_id', '=', 'users.id')
+                        ->join('buku', 'peminjaman.buku_id', '=', 'buku.id')
+                        ->select('peminjaman.id', 'users.name', 'buku.judul', 'peminjaman.tanggal_pinjam', 'peminjaman.deadline_pengembalian')
+                        ->get();
+
+        return view('buku.peminjaman', compact('peminjaman'));
     }
 }

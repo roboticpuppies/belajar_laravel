@@ -30,7 +30,14 @@
           <td>{{ $u->no_hp }}</td>
           <td>{{ $u->role }}</td>
           <td>
-              <a href="/admin/users/delete/{{ $u->id }}" class="btn btn-danger btn-sm"><i class="fa fa-ban" aria-hidden="true"></i></a>
+            <div class="btn-group" role="group">
+              <button id="btnAction" type="button" class="btn btn-secondary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                Action
+              </button>
+              <div class="dropdown-menu" aria-labelledby="btnAction">
+                <a class="dropdown-item" href="/admin/users/delete/{{ $u->id }}">Delete</a>
+              </div>
+            </div>
           </td>
       </tr>
       @endforeach
