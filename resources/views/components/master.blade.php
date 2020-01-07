@@ -51,7 +51,7 @@
           <li class="nav-item">
             <a class="nav-link active" href="/">
               <span data-feather="home"></span>
-              Home
+              <i class="fa fa-home" aria-hidden="true" style="padding-right:10px"></i> Home
             </a>
           </li>
         @can('isAdmin')
